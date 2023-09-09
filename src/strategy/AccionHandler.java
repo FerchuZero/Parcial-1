@@ -17,5 +17,7 @@ public class AccionHandler {
                     .stream()
                     .collect(Collectors.toMap(Accion::getOpcion, Function.identity()));
 
-
+    public static Map<Integer, Accion> getStrategy() {
+        return strategy;
+    }
 }

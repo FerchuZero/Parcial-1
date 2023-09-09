@@ -1,7 +1,7 @@
 package src.strategy;
 
-import src.Juguetes.CreadorCarrito;
-import src.Juguetes.CreadorPeluche;
+import src.juguetes.CreadorCarrito;
+import src.juguetes.CreadorPeluche;
 
 import java.util.Scanner;
 
@@ -15,9 +15,10 @@ public class AccionCrearJuguete implements Accion{
     public void aplicar() {
         System.out.println("¿Qué deseas crear? -> \n" +
                 "1 - Peluche \n"+
-                "2 - Carrito \n"
+                "2 - Carrito "
         );
         int op = scanner.nextInt();
+        System.out.println("");
 
         try {
             if (op == 1){
@@ -36,5 +37,9 @@ public class AccionCrearJuguete implements Accion{
     @Override
     public int getOpcion() {
         return 1;
+    }
+
+    public String toString() {
+        return "Crear Juguete";
     }
 }

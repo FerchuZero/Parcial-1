@@ -1,4 +1,4 @@
-package src.Juguetes;
+package src.juguetes;
 
 public class Carrito implements Juguete{
     private int id;

@@ -10,4 +10,9 @@ public class AccionClonarJuguete implements Accion{
     public int getOpcion() {
         return 2;
     }
+
+    @Override
+    public String toString() {
+        return "Clonar Juguete";
+    }
 }

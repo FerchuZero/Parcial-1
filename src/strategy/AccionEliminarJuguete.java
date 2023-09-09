@@ -10,4 +10,8 @@ public class AccionEliminarJuguete implements Accion{
     public int getOpcion() {
         return 3;
     }
+
+    public String toString() {
+        return "Eliminar Juguete";
+    }
 }

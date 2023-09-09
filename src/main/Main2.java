@@ -1,12 +1,9 @@
 package src.main;
 
 import src.singleton.Menu;
-import src.strategy.Accion;
 
-import java.util.Map;
-
-public class Main {
+public class Main2 {
     public static void main(String[] args) {
-
+        Menu.mostrarMenu();
     }
 }

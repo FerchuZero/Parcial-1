@@ -1,4 +1,4 @@
-package src.Juguetes;
+package src.juguetes;
 
 import src.singleton.Menu;
 import java.util.Scanner;
