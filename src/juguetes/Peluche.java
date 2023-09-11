@@ -11,6 +11,7 @@ public class Peluche implements Juguete {
     public int getId() {
         return this.id;
     }
+
     @Override
     public String getColor() {
         return this.color;
@@ -21,6 +22,13 @@ public class Peluche implements Juguete {
         this.materialExterior = materialExterior;
         this.relleno = relleno;
         this.color = color;
+    }
+
+    public Peluche(Peluche peluche, int id){
+        this.id = id;
+        this.materialExterior = peluche.materialExterior;
+        this.relleno = peluche.relleno;
+        this.color = peluche.color;
     }
 
     public static PelucheBuilder builder(){
@@ -52,7 +60,7 @@ public class Peluche implements Juguete {
         }
 
         public PelucheBuilder color(String color){
-            this.color = this.color;
+            this.color = color;
             return this;
         }
 
@@ -62,5 +70,17 @@ public class Peluche implements Juguete {
 
     }
 
+    public Peluche clone(int id){
+        return new Peluche(this, id);
+    }
+
+    public String toString() {
+        return String.format("Peluche: Id: %3d | Material: %12s | Relleno: %13s | Color: %10s",
+                             this.id, this.materialExterior, this.relleno, this.color);
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 }

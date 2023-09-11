@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class CreadorPeluche implements CreadorJuguete{
 
     private static Scanner scanner = new Scanner(System.in);
+    private Menu menu = Menu.getInstance();
 
     @Override
     public Juguete crear() {
@@ -19,7 +20,7 @@ public class CreadorPeluche implements CreadorJuguete{
         String color = scanner.nextLine();
 
         Peluche peluche = Peluche.builder()
-                .id(Menu.rgid)
+                .id(menu.juguetes.size())
                 .materialExterior(materialExterior)
                 .relleno(relleno)
                 .color(color)

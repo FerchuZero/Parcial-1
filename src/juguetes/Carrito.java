@@ -23,6 +23,13 @@ public class Carrito implements Juguete{
         this.color = color;
     }
 
+    public Carrito(Carrito carrito, int id){
+        this.id = id;
+        this.marca = carrito.marca;
+        this.numeroPuertas = carrito.numeroPuertas;
+        this.color = carrito.color;
+    }
+
     public static CarritoBuilder builder(){
         return new CarritoBuilder();
     }
@@ -52,7 +59,7 @@ public class Carrito implements Juguete{
         }
 
         public CarritoBuilder color(String color){
-            this.color = this.color;
+            this.color = color;
             return this;
         }
 
@@ -61,4 +68,19 @@ public class Carrito implements Juguete{
         }
 
     }
+
+    public Carrito clone(int id){
+        return new Carrito(this, id);
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("Carrito: Id: %3d | Marca: %15s | Número de Puertas: %3d | Color: %10s",
+                             this.id, this.marca, this.numeroPuertas, this.color);
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 }

@@ -11,8 +11,7 @@ import java.util.Scanner;
 
 public class Menu {
     private static Menu instance;
-    private static List<Juguete> juguetes = new ArrayList<>();
-    public static int rgid = juguetes.size();
+    public static List<Juguete> juguetes = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
     private Menu() {
@@ -29,7 +28,8 @@ public class Menu {
 
         boolean sw = true;
         do {
-            System.out.println(" - Juegueteria donde El Mono - ");
+            System.out.println("");
+            System.out.println(" - Juegueteria Pacheli - ");
             System.out.println("Elija una opción ->");
             menu.forEach((integer, accion) -> {
                 System.out.println(accion.getOpcion() + " - " + accion);
@@ -39,8 +39,12 @@ public class Menu {
             try{
                 op = scanner.nextInt();
                 menu.get(op).aplicar();
+                sw = true;
             }catch (Exception ex){
-                System.out.println(" ¡ERROR - " + ex.toString());
+                System.out.println("");
+                System.out.println(" ¡ERROR - Opcion no valida! ");
+                System.out.println("");
+                sw = true;
             }
 
             if (op == 5){

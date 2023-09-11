@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class CreadorCarrito implements CreadorJuguete{
 
     private static Scanner scanner = new Scanner(System.in);
+    private Menu menu = Menu.getInstance();
 
     @Override
     public Juguete crear() {
@@ -16,11 +17,13 @@ public class CreadorCarrito implements CreadorJuguete{
         System.out.println("Número de Puertas -> ");
         int numeroPuertas = scanner.nextInt();
 
+        scanner.nextLine();
+
         System.out.println("Color -> ");
         String color = scanner.nextLine();
 
         Carrito carrito = Carrito.builder()
-                .id(Menu.rgid)
+                .id(menu.juguetes.size())
                 .marca(marca)
                 .numeroPuertas(numeroPuertas)
                 .color(color)
