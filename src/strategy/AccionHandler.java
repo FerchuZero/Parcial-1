@@ -12,7 +12,11 @@ public class AccionHandler {
             List.of(new AccionCrearJuguete(),
                     new AccionClonarJuguete(),
                     new AccionEliminarJuguete(),
-                    new AccionListarJuguetes())
+                    new AccionListarJuguetes(),
+                    new AccionMostrarPeluche_Carrito(),
+                    new AccionMostrarCarritoMaxPuertas(),
+                    new AccionConvertirMapa(),
+                    new AccionEliminarJugueteColor())
                     .stream()
                     .collect(Collectors.toMap(Accion::getOpcion, Function.identity()));
 

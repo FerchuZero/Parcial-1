@@ -1,6 +1,8 @@
 package src.strategy;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 import src.juguetes.Juguete;
 import src.singleton.Menu;
@@ -12,45 +14,42 @@ public class AccionEliminarJuguete implements Accion{
 
     @Override
     public void aplicar() {
-        System.out.println("");
+        System.out.println();
         System.out.println(" ¿Que elemento desea eliminar? ");
-        System.out.println("");
+        System.out.println();
 
         try {
             if(menu.juguetes.isEmpty()){
-                    System.out.println("");
+                    System.out.println();
                     System.out.println(" -No hay juguetes disponibles- 'Debes crear uno nuevo'");
-                    System.out.println("");
+                    System.out.println();
             }else{
                 System.out.println(" -Juguetes- ");
-                for (int i = 0; i < menu.juguetes.size(); i++) {
-                    System.out.println(menu.juguetes.get(i).toString());
-                }
+                menu.juguetes.forEach(System.out::println);
 
                 System.out.println("Ingrese el Id ->");
-                int elm = scanner.nextInt();
+                int idJuguete = scanner.nextInt();
                 
                 for (Juguete juguete : menu.juguetes) {
-                if (juguete.getId() == elm) {
+                if (juguete.getId() == idJuguete) {
                     menu.juguetes.remove(juguete);
 
-                    System.out.println("");
+                    System.out.println();
                     System.out.println(" -Juguete eliminado- ");
-                    System.out.println("");
+                    System.out.println();
                     break;
                     }
                 }
             }
-            
 
-            for (int i = 0; i < menu.juguetes.size(); i++) {
-                menu.juguetes.get(i).setId(i);
-            }
-
-            Collections.sort(menu.juguetes, (o1, o2) -> Integer.compare(o1.getId(), o2.getId()));
+            menu.juguetes.forEach(juguete -> {
+                for (int i = 0; i < menu.juguetes.size(); i++) {
+                    juguete.setId(i);
+                }
+            });
 
         } catch (Exception e) {
-            System.out.println("");
+            System.out.println();
             System.out.println(" -Juguete no encontrado- 'Digite bien el Id'");
         }
     }

@@ -3,15 +3,13 @@ package src.singleton;
 import src.juguetes.Juguete;
 import src.strategy.Accion;
 import src.strategy.AccionHandler;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+
+import java.util.*;
 
 
 public class Menu {
     private static Menu instance;
-    public static List<Juguete> juguetes = new ArrayList<>();
+    public static Set<Juguete> juguetes = new HashSet<>();
     private static Scanner scanner = new Scanner(System.in);
 
     private Menu() {
@@ -24,7 +22,7 @@ public class Menu {
 
     public static void mostrarMenu(){
         Map<Integer, Accion> menu = AccionHandler.getStrategy();
-        int op = 5;
+        int op = 10;
 
         boolean sw = true;
         do {
@@ -34,7 +32,7 @@ public class Menu {
             menu.forEach((integer, accion) -> {
                 System.out.println(accion.getOpcion() + " - " + accion);
             });
-            System.out.println("5 - Salir");
+            System.out.println("10 - Salir");
 
             try{
                 op = scanner.nextInt();
@@ -47,7 +45,7 @@ public class Menu {
                 sw = true;
             }
 
-            if (op == 5){
+            if (op == 10){
                 sw = false;
             }
         }while (sw);

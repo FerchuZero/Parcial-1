@@ -8,12 +8,10 @@ public class AccionListarJuguetes implements Accion{
 
     @Override
     public void aplicar() {
-        System.out.println("");
+        System.out.println();
         System.out.println(" -Juguetes- ");
-        for (int i = 0; i < menu.juguetes.size(); i++) {
-            System.out.println(menu.juguetes.get(i).toString());
-        }
-        System.out.println("");
+        menu.juguetes.forEach(System.out::println);
+        System.out.println();
     }
 
     @Override
@@ -22,6 +20,6 @@ public class AccionListarJuguetes implements Accion{
     }
 
     public String toString() {
-        return "Mostrar Juguete";
+        return "Mostrar Juguetes";
     }
 }

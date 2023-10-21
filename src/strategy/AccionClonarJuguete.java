@@ -1,6 +1,10 @@
 package src.strategy;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 import src.juguetes.Juguete;
 import src.singleton.Menu;
@@ -11,30 +15,38 @@ public class AccionClonarJuguete implements Accion{
 
     @Override
     public void aplicar() {
+        List<Juguete> juguetes = new ArrayList<>(menu.juguetes);
+
         Scanner scanner = new Scanner(System.in);
-        System.out.println("");
+        System.out.println();
         System.out.println(" ¿Que elemento desea clonar? ");
-        System.out.println("");
+        System.out.println();
 
         System.out.println(" -Juguetes- ");
-        for (int i = 0; i < menu.juguetes.size(); i++) {
-            System.out.println(menu.juguetes.get(i).toString());
-        }
+        juguetes.forEach(System.out::println);
         System.out.println("Ingrese el Id ->");
-        int elm = scanner.nextInt();
+        int idJuguete = scanner.nextInt();
 
-        System.out.println("");
+        System.out.println();
         System.out.println("Numero de clones -> ");
-        int nc = scanner.nextInt();
+        int numeroClones = scanner.nextInt();
 
-        Juguete juguete;
+        Juguete juguete = menu.juguetes.stream()
+                .filter(juguete1 -> juguete1.getId() == idJuguete)
+                .findFirst()
+                .orElse(null);
+
         try {
-            juguete = menu.juguetes.get(elm);
-            for (int i = 0; i < nc; i++) {
-            menu.juguetes.add(juguete.clone(menu.juguetes.size()));
-        }
+            if (juguete == null){
+                System.out.println();
+                System.out.println(" -Juguete no encontrado- 'Digite bien el Id'");
+            }else {
+                for (int i = 0; i < numeroClones; i++) {
+                    menu.juguetes.add(juguete.clone(menu.juguetes.size()));
+                }
+            }
         } catch (Exception e) {
-            System.out.println("");
+            System.out.println();
             System.out.println(" -Juguete no encontrado- 'Digite bien el Id'");
         }
 

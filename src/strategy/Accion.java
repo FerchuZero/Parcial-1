@@ -1,7 +1,7 @@
 package src.strategy;
 
 public interface Accion {
-    void aplicar();
 
+    void aplicar();
     int getOpcion();
 }

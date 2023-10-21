@@ -7,13 +7,17 @@ public class Carrito implements Juguete{
     private String color;
 
     @Override
-    public String getColor() {
-        return this.color;
+    public int getId() {
+        return this.id;
+    }
+
+    public int getNumeroPuertas() {
+        return numeroPuertas;
     }
 
     @Override
-    public int getId() {
-        return this.id;
+    public String getColor() {
+        return this.color;
     }
 
     public Carrito(int id, String marca, int numeroPuertas, String color) {

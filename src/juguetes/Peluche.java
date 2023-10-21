@@ -12,11 +12,6 @@ public class Peluche implements Juguete {
         return this.id;
     }
 
-    @Override
-    public String getColor() {
-        return this.color;
-    }
-
     public Peluche(int id, String materialExterior, String relleno, String color){
         this.id = id;
         this.materialExterior = materialExterior;
@@ -29,6 +24,10 @@ public class Peluche implements Juguete {
         this.materialExterior = peluche.materialExterior;
         this.relleno = peluche.relleno;
         this.color = peluche.color;
+    }
+
+    public String getColor() {
+        return this.color;
     }
 
     public static PelucheBuilder builder(){
