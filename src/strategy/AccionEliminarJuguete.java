@@ -42,11 +42,10 @@ public class AccionEliminarJuguete implements Accion{
                 }
             }
 
-            menu.juguetes.forEach(juguete -> {
-                for (int i = 0; i < menu.juguetes.size(); i++) {
-                    juguete.setId(i);
-                }
-            });
+            int asignadorIds = 1;
+            for(Juguete juguete : menu.juguetes){
+                juguete.setId(asignadorIds++);
+            }
 
         } catch (Exception e) {
             System.out.println();

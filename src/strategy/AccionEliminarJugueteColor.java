@@ -4,6 +4,7 @@ import src.juguetes.Juguete;
 import src.singleton.Menu;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class AccionEliminarJugueteColor implements Accion{
 
@@ -13,7 +14,8 @@ public class AccionEliminarJugueteColor implements Accion{
     public void aplicar() {
         Map<Integer, String> colores = new HashMap<>();
         Set<String> coloresSet = new HashSet<>();
-
+        List<Juguete> juguetesList = new ArrayList<>(menu.juguetes);
+        Boolean jugueteEliminado = false;
 
         menu.juguetes.stream()
                 .forEach(juguete ->{
@@ -27,22 +29,31 @@ public class AccionEliminarJugueteColor implements Accion{
         colores.forEach((integer, color) -> System.out.println(integer + " -> " + color) );
 
         try {
-            Integer color = scanner.nextInt();
+            Integer colorEliminar = scanner.nextInt();
+            String colorString = colores.get(colorEliminar);
 
-            for (Juguete juguete : menu.juguetes) {
-                if (juguete.getColor() == colores.get(color)) {
-                    for (int i = 0; i < menu.juguetes.size(); i++) {
-                        menu.juguetes.remove(juguete);
-                    }
+            for (Juguete juguete : juguetesList) {
+                if (juguete.getColor() == colorString) {
+                    menu.juguetes.remove(juguete);
 
                     System.out.println();
                     System.out.println(" -Juguete eliminado- ");
                     System.out.println();
-                    break;
+
+                    jugueteEliminado = true;
                 }
             }
+
+            int asignadorIds = 1;
+            if (jugueteEliminado) {
+                for(Juguete juguete : menu.juguetes){
+                    juguete.setId(asignadorIds++);
+                }
+            }
+            
         }catch (Exception e){
             System.out.println();
+            System.out.println(e);
             System.out.println(" -Color no encontrado- 'Digite bien la Key'");
         }
 
